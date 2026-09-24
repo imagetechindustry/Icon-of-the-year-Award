@@ -1,7 +1,7 @@
 export const keyDates = [
   {
-    title: "Mumbai Edition",
-    date: "22 November 2026",
+    title: "New Delhi, India ",
+    date: "12 December,2026",
     icon: "🇮🇳",
   },
 ];
