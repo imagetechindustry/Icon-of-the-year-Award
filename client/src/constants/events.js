@@ -1,7 +1,7 @@
 export const events = [
     {
         title: "WOMEN ICON OF THE YEAR, 2026 –New Delhi ,India",
-        date: "26 December,2026",
+        date: "12 December,2026",
         desc: "Honouring the visionary women leaders and  industries rewriting the future of Indian business and guiding the next generation of women  entrepreneurs.",
         place: "New Delhi, India",
         highlight: "National Excellence",
