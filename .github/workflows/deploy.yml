@@ -1,0 +1,60 @@
+name: Deploy India Icon Backend to EC2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "server/**"
+      - ".github/workflows/deploy.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy backend to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+
+            echo "Starting India Icon deployment..."
+
+            cd /opt/apps/india-icon
+
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Building Docker image..."
+            cd server
+            sudo docker build -t india-icon-api:latest .
+
+            echo "Stopping old container..."
+            sudo docker stop india-icon-api || true
+
+            echo "Removing old container..."
+            sudo docker rm india-icon-api || true
+
+            echo "Starting new container..."
+            sudo docker run -d \
+              --name india-icon-api \
+              --env-file /opt/apps/india-icon/env/production.env \
+              -p 127.0.0.1:3004:3001 \
+              --restart always \
+              india-icon-api:latest
+
+            echo "Waiting for container..."
+            sleep 10
+
+            echo "Checking container..."
+            sudo docker ps --filter "name=india-icon-api"
+
+            echo "Checking application..."
+            curl --fail http://127.0.0.1:3004/ || exit 1
+
+            echo "Deployment successful!"

@@ -1,19 +1,26 @@
-FROM node:23-slim
+FROM node:22-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install production dependencies
+RUN npm ci --omit=dev
 
-# Copy the rest of the application code
+# Copy source code
 COPY . .
 
-# Expose the standard port the server uses
-EXPOSE 5001
+# Run as non-root user
+USER node
 
-# Start the server
+# Application port
+EXPOSE 3001
+
+# Container health check
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD wget -q --spider http://127.0.0.1:3001/ || exit 1
+
+# Start application
 CMD ["npm", "start"]
