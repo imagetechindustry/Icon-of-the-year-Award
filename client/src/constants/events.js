@@ -1,11 +1,11 @@
 export const events = [
     {
-        title: "Indian Icon of the Year Award, 2026 –Mumbai Edition",
-        date: "22 November,2026",
-        desc: "Honouring the visionary leaders and  industries rewriting the future of Indian business and guiding the next generation of entrepreneurs.",
-        place: "Mumbai, India",
+        title: "WOMEN ICON OF THE YEAR, 2026 –New Delhi ,India",
+        date: "26 December,2026",
+        desc: "Honouring the visionary women leaders and  industries rewriting the future of Indian business and guiding the next generation of women  entrepreneurs.",
+        place: "New Delhi, India",
         highlight: "National Excellence",
-        banner: "../indiabrand-icon-award.jpeg",
-        slug: "https://www.indiabrandicon.in/upcoming-editions/2026/india-brand-icon-awards-conference"
+        banner: "../womenIcon.png",
+        slug: "https://www.indiabrandicon.in/upcoming-editions/2026/women-icon-of-the-year"
     },
 ];
