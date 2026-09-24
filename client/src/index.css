@@ -1,0 +1,1495 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ====================================================================
+   ICON OF THE YEAR AWARD — Design System, 2026
+   PALETTE: Obsidian · Imperial Gold · Crimson · Copper · Platinum
+   ==================================================================== */
+
+@property --aurora-pos {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+:root {
+  --font-body: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-accent: 'Space Grotesk', system-ui, sans-serif;
+
+  /* ── Brand palette ──────────────────────────────────────────────── */
+  --gold: #D4AF37;
+  --gold-l: #F0CB5A;
+  --gold-xl: #FFF0B3;
+  --gold-d: #8B6914;
+  --navy: #060D1A;
+  --navy-l: #0A1428;
+  --royal: #1A56DB;
+  --royal-l: #60A5FA;
+  --violet: #1B3A8B;
+  --violet-l: #E8722A;
+  --sky: #0F2057;
+  --sky-l: #F0CB5A;
+  --amber: #1B3A8B;
+  --amber-l: #E8722A;
+  --rose: #060F2A;
+  --rose-l: #FFF0B3;
+
+  /* ── Surfaces ───────────────────────────────────────────────────── */
+  --base-bg: #030818;
+  --surface: rgba(6, 10, 26, 0.78);
+  --surface-2: rgba(10, 16, 44, 0.58);
+  --glass-b: rgba(232, 114, 42, 0.18);
+
+  /* ── Glows ──────────────────────────────────────────────────────── */
+  --glow-gold: 0 0 28px rgba(212, 175, 55, 0.42), 0 0 56px rgba(212, 175, 55, 0.14);
+  --glow-royal: 0 0 28px rgba(26, 86, 219, 0.48), 0 0 56px rgba(26, 86, 219, 0.18);
+  --glow-violet: 0 0 28px rgba(27, 58, 139, 0.48), 0 0 56px rgba(27, 58, 139, 0.18);
+  --glow-sky: 0 0 28px rgba(240, 203, 90, 0.42), 0 0 56px rgba(240, 203, 90, 0.14);
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--base-bg);
+  color: #F5EEE8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-accent);
+  letter-spacing: -0.01em;
+}
+
+/* ====================================================================
+   KEYFRAMES — compositor-thread safe (transform / opacity / box-shadow)
+   ==================================================================== */
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.90);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-rev {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes badge-bop {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes hero-glow {
+
+  0%,
+  100% {
+    opacity: 0.26;
+  }
+
+  50% {
+    opacity: 0.62;
+  }
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes neon-gold {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.32), 0 0 22px rgba(212, 175, 55, 0.10);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(212, 175, 55, 0.78), 0 0 48px rgba(212, 175, 55, 0.30), 0 0 84px rgba(212, 175, 55, 0.08);
+  }
+}
+
+@keyframes neon-royal {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(26, 86, 219, 0.32), 0 0 22px rgba(26, 86, 219, 0.10);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(26, 86, 219, 0.78), 0 0 48px rgba(26, 86, 219, 0.30), 0 0 84px rgba(26, 86, 219, 0.08);
+  }
+}
+
+@keyframes neon-violet {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(27, 58, 139, 0.32), 0 0 22px rgba(27, 58, 139, 0.10);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(27, 58, 139, 0.78), 0 0 48px rgba(27, 58, 139, 0.30), 0 0 84px rgba(27, 58, 139, 0.08);
+  }
+}
+
+@keyframes neon-sky {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(240, 203, 90, 0.32), 0 0 22px rgba(240, 203, 90, 0.10);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(240, 203, 90, 0.78), 0 0 48px rgba(240, 203, 90, 0.30), 0 0 84px rgba(240, 203, 90, 0.08);
+  }
+}
+
+@keyframes glass-shine {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(200%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fog-drift {
+
+  0%,
+  100% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+    opacity: 0.24;
+  }
+
+  50% {
+    transform: translate3d(10%, 8%, 0) scale(1.14);
+    opacity: 0.52;
+  }
+}
+
+@keyframes fog-drift-2 {
+
+  0%,
+  100% {
+    transform: translate3d(16%, 8%, 0) scale(1.1);
+    opacity: 0.17;
+  }
+
+  50% {
+    transform: translate3d(-7%, -4%, 0) scale(0.92);
+    opacity: 0.44;
+  }
+}
+
+@keyframes gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes particle-accel {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.20;
+  }
+
+  50% {
+    transform: translate3d(var(--tx), var(--ty), 0);
+    opacity: 0.55;
+  }
+}
+
+@keyframes light-streak {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.26;
+  }
+
+  100% {
+    transform: translate3d(50%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes border-glow-op {
+
+  0%,
+  100% {
+    opacity: 0.20;
+  }
+
+  50% {
+    opacity: 0.50;
+  }
+}
+
+/* ====================================================================
+   MOBILE-ONLY AURORA (static radial gradient blobs — no JS, no canvas)
+   The .mobile-aurora-primary div is injected by MobileAuroraBackground.
+   On mobile we add a very slow background-position animation so the
+   page doesn't feel completely static, but it uses a single CSS layer
+   with zero JS involvement.
+   ==================================================================== */
+
+.mobile-aurora-primary {
+  /* Colors match the desktop orb palette exactly */
+  will-change: auto;
+  /* no GPU promotion needed — static background */
+}
+
+/* Give the mobile aurora a very gentle slow drift using a slowed
+   background-size trick that costs ~0 GPU — only background-position
+   changes, which doesn't trigger compositing. */
+@media (pointer: coarse) {
+  .mobile-aurora-primary {
+    animation: aurora 20s ease infinite;
+    /* much slower than desktop */
+    background-size: 180% 180%;
+  }
+}
+
+/* ====================================================================
+   ANIMATION UTILITIES
+   ==================================================================== */
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 90s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease-out forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-spin-rev {
+  animation: spin-rev 16s linear infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-badge {
+  animation: badge-bop 2s ease-in-out infinite;
+}
+
+.animate-hero-glow {
+  animation: hero-glow 3s ease-in-out infinite;
+}
+
+.animate-neon-gold {
+  animation: neon-gold 2.4s ease-in-out infinite;
+}
+
+.animate-neon-royal {
+  animation: neon-royal 2.4s ease-in-out infinite;
+}
+
+.animate-neon-violet {
+  animation: neon-violet 2.4s ease-in-out infinite;
+}
+
+.animate-neon-sky {
+  animation: neon-sky 2.4s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: neon-gold 2.4s ease-in-out infinite;
+}
+
+.animate-aurora {
+  background: linear-gradient(270deg,
+      #D4AF37, #96b5f8, #1B3A8B, #b6d4df,
+      #F0CB5A, #60A5FA, #D4AF37);
+  background-size: 400% 400%;
+  animation: aurora 8s ease infinite;
+}
+
+.animate-particle-accel {
+  animation: particle-accel var(--dur) ease-in-out infinite var(--delay);
+  will-change: transform, opacity;
+}
+
+.animate-light-streak {
+  animation: light-streak var(--dur) ease-in-out infinite var(--delay);
+  will-change: transform, opacity;
+}
+
+.animate-border-glow-op {
+  animation: border-glow-op 4s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* Animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.delay-2000 {
+  animation-delay: 2000ms;
+}
+
+/* ====================================================================
+   MOBILE — KILL EXPENSIVE CONTINUOUS ANIMATIONS
+   @media (pointer: coarse) targets touch devices only.
+   Desktop (pointer: fine / mouse) is completely unaffected.
+   Every color is preserved — only animation timing and blur are changed.
+   ==================================================================== */
+
+@media (pointer: coarse) {
+  /* ── Slow down or freeze non-critical looping animations ─────────
+     These classes are still applied by React — we just override their
+     timing so the GPU isn't racing every frame on a phone. */
+
+  .animate-float,
+  .animate-float-slow {
+    /* float at 8s instead of 3.5s — visually fine, much less CPU wakeup */
+    animation-duration: 8s !important;
+  }
+
+  .animate-twinkle {
+    animation-duration: 4s !important;
+  }
+
+  .animate-spin-slow {
+    animation-duration: 24s !important;
+  }
+
+  .animate-spin-rev {
+    animation-duration: 32s !important;
+  }
+
+  .animate-hero-glow {
+    animation-duration: 6s !important;
+  }
+
+  .animate-badge {
+    animation-duration: 4s !important;
+  }
+
+  /* Marquee: keep running but ensure it doesn't force continuous repaints
+     by slowing slightly so the browser can skip frames */
+  .animate-marquee {
+    animation-duration: 80s !important;
+  }
+
+  .animate-marquee-slow {
+    animation-duration: 120s !important;
+  }
+
+  /* Neon pulses — kill entirely on mobile, they animate box-shadow which
+     is one of the most expensive things to animate (causes recomposite).
+     The element still has its base style / color. */
+  .animate-neon-gold,
+  .animate-neon-royal,
+  .animate-neon-violet,
+  .animate-neon-sky,
+  .animate-border-glow {
+    animation: none !important;
+  }
+
+  /* particle-accel and light-streak are JS-controlled but slow their CSS fallbacks */
+  .animate-particle-accel,
+  .animate-light-streak {
+    animation: none !important;
+    will-change: auto !important;
+  }
+
+  /* aurora gradient on text/elements: slow from 8s → 16s */
+  .animate-aurora {
+    animation-duration: 16s !important;
+  }
+
+  /* Page hero aurora stripe — compositor-safe, keep it but slowed */
+  .page-hero::after {
+    animation-duration: 10s !important;
+  }
+
+  .page-hero-title {
+    animation-duration: 16s !important;
+  }
+
+  .page-hero-divider {
+    animation-duration: 10s !important;
+  }
+
+  .page-hero-badge {
+    animation-duration: 5s !important;
+  }
+
+  /* card-rainbow border: keep the gradient but slow animation */
+  .card-rainbow {
+    animation-duration: 12s !important;
+  }
+
+  /* nav glow button: keep colors, kill aurora cycle, just show final gradient */
+  .nav-glow-btn {
+    animation: none !important;
+    background: linear-gradient(135deg, #D4AF37, #122470, #1A56DB) !important;
+  }
+}
+
+/* ====================================================================
+   GLASS CARDS — DESKTOP
+   ==================================================================== */
+
+.glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(9, 18, 60, 0.15) 0%, rgba(3, 8, 20, 0.94) 100%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.60), inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  isolation: isolate;
+  contain: layout style;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.36s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.36s ease, box-shadow 0.36s ease;
+}
+
+.glass-card:hover {
+  will-change: transform;
+}
+
+.glass-card:not(:hover) {
+  will-change: auto;
+}
+
+.glass-card-hover-active {
+  transition: transform 0.36s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.36s ease, box-shadow 0.36s ease;
+}
+
+.glass-card-hover-active:hover {
+  transform: scale3d(1.020, 1.020, 1.020) translate3d(0, -5px, 0) !important;
+  box-shadow: 0 26px 60px rgba(26, 86, 219, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Shine sweep — fires once on hover, not looping */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 68%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.glass-card:hover::before {
+  animation: glass-shine 1.6s cubic-bezier(0.4, 0, 0.2, 1) 1;
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 40%, rgba(232, 114, 42, 0.12)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.42;
+}
+
+/* ====================================================================
+   GLASS CARD — MOBILE LITE
+   ─────────────────────────────────────────────────────────────────────
+   .glass-card-mobile is used by NeonCard on all mobile/touch devices.
+
+   What it keeps (full visual fidelity):
+   • Same dark gradient background (matches .glass-card exactly)
+   • Same border color, border radius, box shadow
+   • Same gradient text / color combinations (those are on children)
+
+   What it drops on mobile:
+   • backdrop-filter: blur() — this is the #1 GPU killer on mobile.
+     It forces the browser to composite every frame through a multi-pass
+     blur shader. On a low-end phone this alone can halve your frame rate.
+     Replaced with a slightly more opaque solid background so the card
+     is still visually distinct — colors are identical.
+   • ::before shine sweep — hover doesn't exist on touch anyway
+   • ::after inner border gradient — saves one composited layer
+   • will-change entirely — no GPU layers promoted at rest
+   ==================================================================== */
+
+.glass-card-mobile {
+  position: relative;
+  /* Slightly more opaque than .glass-card to compensate for no blur */
+  background: linear-gradient(135deg, rgba(9, 18, 60, 0.25) 0%, rgba(3, 8, 20, 0.97) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  isolation: isolate;
+  contain: layout style;
+  /* NO backdrop-filter, NO will-change, NO ::before/::after layers */
+  transition: border-color 0.28s ease;
+}
+
+/* Active-state (finger press) subtle border highlight — touch UX */
+.glass-card-mobile:active {
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+/* ====================================================================
+   FOG MIST — desktop only
+   ==================================================================== */
+
+.fog-mist {
+  position: absolute;
+  inset: -68px;
+  background: radial-gradient(ellipse 72% 52% at 50% 50%,
+      rgba(26, 86, 219, 0.14) 0%, rgba(240, 203, 90, 0.07) 44%, transparent 70%);
+  animation: fog-drift 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  border-radius: 2rem;
+  transition: opacity 0.7s ease;
+}
+
+.fog-mist::after {
+  content: '';
+  position: absolute;
+  inset: 15%;
+  background: radial-gradient(ellipse 52% 42% at 40% 60%,
+      rgba(27, 58, 139, 0.10) 0%, rgba(96, 165, 250, 0.06) 54%, transparent 80%);
+  animation: fog-drift-2 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.neon-card-wrapper {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.neon-card-wrapper:hover .fog-mist {
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+/* ====================================================================
+   GLASS CARD HOVER VARIANT
+   ==================================================================== */
+
+.glass-card-hover {
+  transition: all 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: linear-gradient(135deg, rgba(8, 16, 55, 0.25) 0%, rgba(4, 8, 24, 0.85) 100%);
+  border-color: rgba(26, 86, 219, 0.44);
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 20px 50px -8px rgba(26, 86, 219, 0.28), 0 0 0 1px rgba(96, 165, 250, 0.12);
+}
+
+/* ====================================================================
+   RAINBOW CARD
+   ==================================================================== */
+
+.card-rainbow {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(135deg, #F0CB5A, #D4AF37, #E8722A, #1A56DB, #60A5FA, #1B3A8B);
+  background-size: 300% 300%;
+  animation: gradient-border 6s linear infinite;
+  isolation: isolate;
+}
+
+.card-rainbow-inner {
+  background: rgba(3, 8, 20, 0.94);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: calc(1.25rem - 1px);
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Mobile: remove backdrop-filter from rainbow card inner too */
+@media (pointer: coarse) {
+  .card-rainbow-inner {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: rgba(3, 8, 20, 0.97) !important;
+  }
+}
+
+.card-lift {
+  transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.34s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-6px) scale(1.016);
+  box-shadow: 0 24px 60px -12px rgba(26, 86, 219, 0.34);
+}
+
+/* ====================================================================
+   GRADIENT TEXT — all preserved, mobile inherits identically
+   ==================================================================== */
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF0B3 0%, #F0CB5A 35%, #D4AF37 70%, #8B6914 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-prestige {
+  background: linear-gradient(135deg, #fff 0%, #BAD7FE 28%, #60A5FA 52%, #1A56DB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-aurora {
+  background: linear-gradient(135deg, #E8722A, #1A56DB, #1B3A8B, #F0CB5A);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 6s ease infinite;
+}
+
+.text-gradient-royal {
+  background: linear-gradient(135deg, #BAD7FE, #60A5FA, #1A56DB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-violet {
+  background: linear-gradient(135deg, #DBEAFE, #E8722A, #1B3A8B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-fire {
+  background: linear-gradient(135deg, #FFF0B3, #D4AF37, #1B3A8B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mobile: slow gradient-text aurora (background-position change is cheap but
+   still wakes the compositor every frame on phones) */
+@media (pointer: coarse) {
+  .text-gradient-aurora {
+    animation-duration: 12s !important;
+  }
+}
+
+/* ====================================================================
+   PAGE HERO
+   ==================================================================== */
+
+.page-hero {
+  position: relative;
+  padding-top: 7rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  overflow: hidden;
+  background: transparent;
+  contain: layout style;
+  isolation: isolate;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 72% 52% at 50% -8%, rgba(179, 164, 81, 0.394) 0%, transparent 56%),
+    radial-gradient(ellipse 52% 42% at 80% 16%, rgba(212, 175, 55, 0.16) 0%, transparent 46%);
+  pointer-events: none;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #E8722A, #1A56DB, #1B3A8B, #0F2057, #F0CB5A, #60A5FA, #E8722A);
+  background-size: 300% 100%;
+  animation: aurora 4s linear infinite;
+}
+
+.page-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.36rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  border: 1px solid rgba(212, 175, 55, 0.34);
+  background: rgba(212, 175, 55, 0.10);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  margin-bottom: 0.6rem;
+  animation: badge-bop 3s ease-in-out infinite;
+}
+
+/* Remove backdrop-filter from badge on mobile */
+@media (pointer: coarse) {
+  .page-hero-badge {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: rgba(212, 175, 55, 0.18) !important;
+    /* slightly stronger to compensate */
+  }
+}
+
+.page-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, #DBEAFE 26%, #a891fd 51%, #F0CB5A 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.08;
+  margin-bottom: 0.3rem;
+  animation: aurora 8s ease infinite;
+}
+
+.page-hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.18rem);
+  color: rgb(245, 238, 232);
+  font-weight: 500;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.page-hero-divider {
+  width: 100px;
+  height: 4px;
+  margin: 0.6rem auto;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, #D4AF37, #1A56DB, #1B3A8B, transparent);
+  background-size: 200% 100%;
+  animation: aurora 4s ease infinite;
+  box-shadow: 0 0 13px rgba(26, 86, 219, 0.44);
+}
+
+/* ====================================================================
+   TYPOGRAPHY
+   ==================================================================== */
+
+.text-display {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.04;
+  font-family: var(--font-heading);
+}
+
+.text-headline {
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.12;
+  font-family: var(--font-heading);
+}
+
+.text-subhead {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: var(--font-accent);
+}
+
+/* ====================================================================
+   BUTTONS
+   ==================================================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #60A5FA, #1A56DB, #060F2A);
+  background-size: 200% 200%;
+  color: #F0F7FF;
+  box-shadow: 0 4px 22px -4px rgba(26, 86, 219, 0.56), 0 0 0 1px rgba(96, 165, 250, 0.22);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  animation: aurora 5s ease infinite;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 58%);
+  opacity: 0;
+  transition: opacity 0.28s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px -5px rgba(26, 86, 219, 0.66), var(--glow-royal);
+  will-change: transform;
+}
+
+.btn-primary:not(:hover) {
+  will-change: auto;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Mobile: touch-tap feedback instead of hover */
+@media (pointer: coarse) {
+  .btn-primary {
+    animation-duration: 10s !important;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 12px -4px rgba(26, 86, 219, 0.50);
+  }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  border: 1.5px solid rgba(26, 86, 219, 0.40);
+  color: var(--royal-l);
+  background: transparent;
+  transition: background 0.28s, border-color 0.28s, box-shadow 0.28s, color 0.28s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline:hover {
+  background: rgba(26, 86, 219, 0.10);
+  border-color: var(--royal);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(26, 86, 219, 0.22);
+}
+
+/* ====================================================================
+   SECTION LABEL
+   ==================================================================== */
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.30rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(26, 86, 219, 0.10);
+  border: 1px solid rgba(26, 86, 219, 0.28);
+  color: var(--royal-l);
+}
+
+/* ====================================================================
+   SCROLLBAR
+   ==================================================================== */
+
+.brand-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--royal) transparent;
+}
+
+.brand-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.brand-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.brand-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #60A5FA, #1A56DB, #0F2057);
+  border-radius: 10px;
+}
+
+/* ====================================================================
+   BACKGROUND PATTERNS
+   ==================================================================== */
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(26, 86, 219, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 86, 219, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-cross-pattern {
+  background-image:
+    linear-gradient(rgba(26, 86, 219, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 86, 219, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(212, 175, 55, 0.025) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.025) 2px, transparent 2px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+/* Mobile: reduce background-pattern tile count (still visually identical) */
+@media (pointer: coarse) {
+  .bg-cross-pattern {
+    background-size: 48px 48px, 48px 48px, 240px 240px, 240px 240px;
+  }
+}
+
+/* ====================================================================
+   SWIPER
+   ==================================================================== */
+
+.swiper-pagination-bullet {
+  background: rgba(26, 86, 219, 0.36) !important;
+  opacity: 1 !important;
+  transition: all 0.3s !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--royal-l) !important;
+  transform: scale(1.4) !important;
+  box-shadow: 0 0 9px rgba(96, 165, 250, 0.64) !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--royal-l) !important;
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.54)) !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+
+/* ====================================================================
+   ORB & SPARKLE PRIMITIVES
+   ==================================================================== */
+
+.orb {
+  position: absolute;
+  border-radius: 30%;
+  pointer-events: none;
+  contain: strict;
+}
+
+.orb-gold {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.28), transparent 70%);
+}
+
+.orb-royal {
+  background: radial-gradient(circle, rgba(26, 86, 219, 0.28), transparent 70%);
+}
+
+.orb-violet {
+  background: radial-gradient(circle, rgba(27, 58, 139, 0.26), transparent 70%);
+}
+
+.orb-sky {
+  background: radial-gradient(circle, rgba(15, 32, 87, 0.24), transparent 70%);
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 30%;
+  pointer-events: none;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* ====================================================================
+   STAT CARD
+   ==================================================================== */
+
+.stat-card {
+  background: rgba(4, 8, 24, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(26, 86, 219, 0.18);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.32s, box-shadow 0.32s;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout style;
+  isolation: isolate;
+}
+
+.stat-card:hover {
+  border-color: rgba(26, 86, 219, 0.50);
+  box-shadow: 0 0 26px rgba(26, 86, 219, 0.18);
+  transform: translateY(-4px);
+  will-change: transform;
+}
+
+.stat-card:not(:hover) {
+  will-change: auto;
+}
+
+/* Mobile: remove backdrop-filter from stat card */
+@media (pointer: coarse) {
+  .stat-card {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: rgba(4, 8, 24, 0.92) !important;
+    /* Colors (border, gradient text) fully preserved */
+  }
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #FFF0B3, #D4AF37, #1A56DB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(96, 165, 250, 0.72);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+/* ====================================================================
+   MISC
+   ==================================================================== */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26, 86, 219, 0.34), rgba(212, 175, 55, 0.24), transparent);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====================================================================
+   GLOWING NAV BUTTON
+   ==================================================================== */
+
+.nav-glow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #D4AF37, #122470, #1A56DB);
+  background-size: 200% 200%;
+  color: #fff !important;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.35), inset 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: aurora 6s ease infinite;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 1280px) {
+  .nav-glow-btn {
+    gap: 0.5rem;
+    padding: 0.48rem 1.35rem;
+    font-size: 0.88rem;
+  }
+}
+
+.nav-glow-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 26px rgba(212, 175, 55, 0.65), 0 0 12px rgb(27, 58, 139), inset 0 0 12px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  will-change: transform;
+}
+
+.nav-glow-btn:not(:hover) {
+  will-change: auto;
+}
+
+.nav-glow-btn-active {
+  background: linear-gradient(135deg, #F0CB5A, #C87020, #1B3A8B) !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ====================================================================
+   CONTENT VISIBILITY — off-screen sections skip paint entirely
+   ==================================================================== */
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+/* ====================================================================
+   MOBILE — GLOBAL BACKDROP-FILTER KILL
+   ─────────────────────────────────────────────────────────────────────
+   backdrop-filter: blur() is by far the most expensive CSS property on
+   mobile. Every element with it creates a new compositing layer and
+   forces a multi-pass GPU fill for every pixel it covers.
+
+   On a 1080p phone screen at DPR 3 that's millions of pixels per frame.
+   Budget for a low-end phone: ~8ms per frame. backdrop-filter alone can
+   cost 12–20ms, causing constant drops to 15–20 fps.
+
+   This final catch-all ensures any dynamically added elements with
+   backdrop-filter are neutralized on touch devices.
+   Colors, gradients, borders — all intact.
+   ==================================================================== */
+
+@media (pointer: coarse) {
+
+  /* Cover every selector that uses backdrop-filter */
+  .glass-card,
+  .glass-card-hover,
+  .card-rainbow-inner,
+  .stat-card {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Compensate opacity for cards that relied on blur for separation */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(9, 18, 60, 0.28) 0%, rgba(3, 8, 20, 0.97) 100%) !important;
+  }
+
+  /* No hover transforms on touch — they cause layout jank when scrolling */
+  .glass-card-hover-active:hover,
+  .glass-card-hover:hover,
+  .card-lift:hover,
+  .stat-card:hover {
+    transform: none !important;
+  }
+
+  /* Disable fog-mist entirely on mobile — it would never trigger (no hover)
+     but the animation still runs, consuming GPU */
+  .fog-mist {
+    display: none !important;
+  }
+
+  /* Kill will-change everywhere on mobile — browser manages layers better
+     than forced promotion on resource-constrained devices */
+  * {
+    will-change: auto !important;
+  }
+
+  /* Exception: currently-animating elements get will-change back via JS
+     (handled in Motion.jsx via :hover scoping) */
+}
+
+/* ====================================================================
+   ACCESSIBILITY — prefers-reduced-motion
+   ==================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

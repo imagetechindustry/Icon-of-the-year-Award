@@ -1,0 +1,33 @@
+# Node dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build output
+dist/
+build/
+client/dist/
+
+# Logs
+logs
+*.log
+
+# Mac OS
+.DS_Store
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

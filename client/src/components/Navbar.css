@@ -1,0 +1,121 @@
+/* Responsive Navbar Breakpoints */
+
+/* Base (1440px and above) */
+.responsive-nav-links {
+  gap: 1.5rem;
+  /* 24px */
+  font-size: 15px;
+}
+
+.responsive-nav-pill-outer {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 2.5rem;
+  /* 40px */
+  font-size: 15px;
+}
+
+.responsive-nav-pill-inner {
+  gap: 1.5rem;
+  /* 24px */
+}
+
+/* 1300px to 1439px */
+@media (max-width: 1439px) and (min-width: 1300px) {
+  .responsive-nav-links {
+    gap: 1.25rem;
+    /* 20px */
+    font-size: 12px;
+  }
+
+  .responsive-nav-pill-outer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1.5rem;
+    font-size: 12px;
+  }
+
+  .responsive-nav-pill-inner {
+    gap: 1.25rem;
+  }
+}
+
+/* 1150px to 1299px */
+@media (max-width: 1299px) and (min-width: 1150px) {
+  .responsive-nav-links {
+    gap: 1rem;
+    /* 16px */
+    font-size: 11px;
+  }
+
+  .responsive-nav-pill-outer {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    gap: 1rem;
+    font-size: 11px;
+  }
+
+  .responsive-nav-pill-inner {
+    gap: 1rem;
+  }
+}
+
+/* 1024px to 1149px */
+@media (max-width: 1149px) and (min-width: 1024px) {
+  .responsive-nav-links {
+    gap: 0.75rem;
+    /* 12px */
+    font-size: 10px;
+  }
+
+  .responsive-nav-pill-outer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 0.75rem;
+    font-size: 10px;
+  }
+
+  .responsive-nav-pill-inner {
+    gap: 0.75rem;
+  }
+}
+
+/* 950px to 1023px */
+@media (max-width: 1023px) and (min-width: 950px) {
+  .responsive-nav-links {
+    gap: 0.5rem;
+    /* 8px */
+    font-size: 9px;
+  }
+
+  .responsive-nav-pill-outer {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    gap: 0.5rem;
+    font-size: 9px;
+  }
+
+  .responsive-nav-pill-inner {
+    gap: 0.5rem;
+  }
+}
+
+/* 800px to 949px */
+@media (max-width: 949px) and (min-width: 800px) {
+  .responsive-nav-links {
+    gap: 0.25rem;
+    /* 4px */
+    font-size: 8px;
+  }
+
+  .responsive-nav-pill-outer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.25rem;
+    font-size: 8px;
+  }
+
+  .responsive-nav-pill-inner {
+    gap: 0.25rem;
+  }
+}

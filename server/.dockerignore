@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Mac OS
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+
+# Temporary files / Caches
+.npm
+dist/
+build/
+coverage/
+*.log
